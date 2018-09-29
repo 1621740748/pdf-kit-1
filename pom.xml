@@ -11,8 +11,8 @@
     <version>1.1-RELEASE</version>
 
     <properties>
-        <java.src.version>1.7</java.src.version>
-        <java.target.version>1.7</java.target.version>
+        <java.src.version>1.8</java.src.version>
+        <java.target.version>1.8</java.target.version>
         <project.encoding>UTF-8</project.encoding>
     </properties>
 

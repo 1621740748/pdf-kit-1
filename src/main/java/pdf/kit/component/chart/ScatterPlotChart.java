@@ -1,8 +1,20 @@
 package pdf.kit.component.chart;
 
-import com.google.common.collect.Lists;
-import freemarker.template.utility.CollectionUtils;
-import lombok.extern.slf4j.Slf4j;
+import java.awt.BasicStroke;
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.Paint;
+import java.awt.Shape;
+import java.awt.Stroke;
+import java.awt.geom.Ellipse2D;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.util.List;
+
+import javax.imageio.ImageIO;
+
 import org.apache.commons.lang.exception.ExceptionUtils;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartUtilities;
@@ -21,25 +33,19 @@ import org.jfree.chart.renderer.xy.XYLineAndShapeRenderer;
 import org.jfree.chart.urls.StandardXYURLGenerator;
 import org.jfree.data.xy.DefaultXYDataset;
 import org.jfree.data.xy.XYDataset;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import pdf.kit.component.chart.model.XYScatter;
 import pdf.kit.util.FontUtil;
-
-import javax.imageio.ImageIO;
-import java.awt.*;
-import java.awt.geom.Ellipse2D;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.util.List;
 
 /**
  * Created by fgm on 2017/7/4.
  * 散点图生成
  */
-@Slf4j
 public class ScatterPlotChart extends ChartFactory {
 
+    private final static Logger log = LoggerFactory.getLogger(ScatterPlotChart.class);
     private static BufferedImage backgroundImage;
 
     private static String fileName="scatterChart.png";

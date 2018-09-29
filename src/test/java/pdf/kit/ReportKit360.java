@@ -1,25 +1,28 @@
 package pdf.kit;
 
-import com.google.common.collect.Lists;
-import lombok.extern.slf4j.Slf4j;
+import java.util.ArrayList;
+import java.util.List;
+
 import org.apache.commons.lang.exception.ExceptionUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import com.google.common.collect.Lists;
+
 import pdf.kit.component.PDFHeaderFooter;
 import pdf.kit.component.PDFKit;
 import pdf.kit.component.chart.ScatterPlotChart;
-import pdf.kit.component.chart.model.XYLine;
 import pdf.kit.component.chart.impl.DefaultLineChart;
-
-import java.util.ArrayList;
-import java.util.List;
+import pdf.kit.component.chart.model.XYLine;
 
 /**
  * Created by fgm on 2017/4/17.
  * 360报告
  *
  */
-@Slf4j
 public class ReportKit360 {
 
+    private final static Logger log = LoggerFactory.getLogger(ReportKit360.class);
     public static List<XYLine> getTemperatureLineList() {
         List<XYLine> list= Lists.newArrayList();
         for(int i=1;i<=7;i++){
@@ -49,7 +52,7 @@ public class ReportKit360 {
             PDFKit kit=new PDFKit();
             kit.setHeaderFooterBuilder(headerFooter);
             //设置输出路径
-            kit.setSaveFilePath("/Users/fgm/Desktop/pdf/hello.pdf");
+            kit.setSaveFilePath(ReportKit360.class.getResource("").getPath()+"/hello.pdf");
 
             String saveFilePath=kit.exportToFile(fileName,data);
             return  saveFilePath;
@@ -85,9 +88,10 @@ public class ReportKit360 {
         //散点图
         String scatterUrl=ScatterPlotChart.draw(ScatterPlotChartTest.getData(),1,"他评得分(%)","自评得分(%)");
         templateBO.setScatterUrl(scatterUrl);
-        String templatePath="/Users/fgm/workspaces/fix/pdf-kit/src/test/resources/templates";
+        String templatePath=ReportKit360.class.getResource("/").getPath()+"/templates";
         String path= kit.createPDF(templatePath,templateBO,"hello.pdf");
         System.out.println(path);
+       // System.out.println(ReportKit360.class.getResource("/").getPath());
 
 
 

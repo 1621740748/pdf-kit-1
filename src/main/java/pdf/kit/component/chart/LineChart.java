@@ -1,6 +1,12 @@
 package pdf.kit.component.chart;
 
-import lombok.extern.slf4j.Slf4j;
+import java.awt.BasicStroke;
+import java.awt.Color;
+import java.awt.Font;
+import java.io.File;
+import java.io.IOException;
+import java.util.List;
+
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartUtilities;
 import org.jfree.chart.JFreeChart;
@@ -11,21 +17,19 @@ import org.jfree.chart.axis.NumberTickUnit;
 import org.jfree.chart.plot.CategoryPlot;
 import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.data.category.DefaultCategoryDataset;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import pdf.kit.component.chart.model.XYLine;
 import pdf.kit.util.FontUtil;
-
-import java.awt.*;
-import java.io.File;
-import java.io.IOException;
-import java.util.List;
 
 /**
  * Created by fgm on 2017/4/7.
  */
-@Slf4j
 public abstract class LineChart {
 
 
+    private final static Logger log = LoggerFactory.getLogger(LineChart.class);
     private  int width;
 
     private  int height;

@@ -1,21 +1,24 @@
 package pdf.kit.util;
 
-import com.google.common.collect.Maps;
-import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.lang.exception.ExceptionUtils;
-
-import java.awt.*;
+import java.awt.Font;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Map;
 
+import org.apache.commons.lang.exception.ExceptionUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import com.google.common.collect.Maps;
+
+
 /**
  * Created by fgm on 2017/4/22.
  */
-@Slf4j
 public class FontUtil {
 
+    private final static Logger log = LoggerFactory.getLogger(FontUtil.class);
     private static  final Map<String,Font> fontCache= Maps.newConcurrentMap();
 
     public static String getFontPath(String fontName){
